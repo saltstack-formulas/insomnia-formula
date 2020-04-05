@@ -22,7 +22,7 @@ insomnia-package-remove-cmd-run-cask:
     - name: brew cask remove insomnia
     - onlyif: test -x /usr/local/bin/brew
 
-    {%- elif {{ grains.kernel|lower /}} == 'linux' %}
+    {%- elif grains.kernel|lower == 'linux' %}
 
 insomnia-package-remove-cmd-run-snap:
   cmd.run:

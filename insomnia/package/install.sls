@@ -22,7 +22,7 @@ insomnia-package-install-cmd-run-cask:
     - name: brew cask install insomnia
     - onlyif: test -x /usr/local/bin/brew
 
-    {%- elif {{ grains.kernel|lower /}} == 'linux' %}
+    {%- elif grains.kernel|lower == 'linux' %}
 
 insomnia-package-install-cmd-run-snap:
   cmd.run:

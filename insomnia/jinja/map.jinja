@@ -17,35 +17,9 @@
 %}
 {%- set insomnia = salt['grains.filter_by']( {'defaults': defaults}, default='defaults', merge=_config) %}
 
-{%- if insomnia.pkg.use_upstream_source %}
-    {%- do insomnia.pkg.source.update({ 'name': insomnia.dir.source ~ '/insomnia-' ~ insomnia.version,
-           'source': '%s/v%s.%s'|format(insomnia.pkg.source.uri, insomnia.version, insomnia.pkg.suffix) }) %}
+{%- if insomnia.pkg.use_upstream_macapp %}
+   {%- do insomnia.pkg.macapp.update({ 'source': '%s/mac/%s'|format(insomnia.pkg.macapp.uri, insomnia.version)}) %}
 {%- endif %}
 {%- if insomnia.pkg.use_upstream_binary %}
-    {%- set dirname = 'insomnia-v%s-%s-%s'|format( insomnia.version, insomnia.kernel, insomnia.arch ) %}
-    {%- do insomnia.pkg.binary.update({
-           'name': insomnia.dir.binary ~ '/' ~ dirname,
-           'source_hash': insomnia.pkg.binary.uri ~ '/v' ~ insomnia.version ~ '/SHASUMS256.txt',
-           'source': '%s/v%s/%s.%s'|format(insomnia.pkg.binary.uri, insomnia.version, dirname, insomnia.pkg.suffix)}) %}
-{%- endif %}
-
-## Legacy support (remove on/after Jan 2021) ##
-
-{%- if salt['pillar.get']('insomnia:install_from_ppa') %}
-       {%- do insomnia.pkg.update({ 'use_upstream_repo': True }) %}
-       {%- if salt['pillar.get']('insomnia:version') %}
-              {%- do insomnia.pkg.update({ 'version': salt['pillar.get']('insomnia:version')}) %}
-       {%- endif %}
-{%- endif %}
-{%- if salt['pillar.get']('insomnia:install_from_source') %}
-       {%- do insomnia.pkg.update({ 'use_upstream_source': True }) %}
-       {%- if salt['pillar.get']('insomnia:checksum') %}
-              {%- do insomnia.pkg.source.update({ 'source_hash': salt['pillar.get']('insomnia:checksum') }) %}
-       {%- endif %}
-{%- endif %}
-{%- if salt['pillar.get']('insomnia:install_from_binary') %}
-       {%- do insomnia.pkg.update({ 'use_upstream_binary': True }) %}
-       {%- if salt['pillar.get']('insomnia:checksum') %}
-              {%- do insomnia.pkg.binary.update({ 'source_hash': salt['pillar.get']('insomnia:checksum') }) %}
-       {%- endif %}
+   {%- do insomnia.pkg.binary.update({ 'source': '%s/windows/%s'|format(insomnia.pkg.binary.uri, insomnia.version)}) %}
 {%- endif %}

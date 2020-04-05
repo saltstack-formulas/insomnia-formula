@@ -7,7 +7,7 @@
 {%- from tplroot ~ "/jinja/map.jinja" import insomnia with context %}
 
 include:
-  - {{'.macapp.clean' if insomnia.pkg.use_upstream_macapp else '.package.clean' }}
+  -{{ ' .macapp.clean' if insomnia.pkg.use_upstream_macapp else ' .package.clean' }}
 
              {%- elif grains.os_family == 'Windows' %}
 include:
