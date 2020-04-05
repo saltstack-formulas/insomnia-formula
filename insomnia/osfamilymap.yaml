@@ -1,0 +1,43 @@
+# -*- coding: utf-8 -*-
+# vim: ft=yaml
+#
+# Setup variables using grains['os_family'] based logic.
+# You just need to add the key:values for an `os_family` that differ
+# from `defaults.yaml`.
+# Only add an `os_family` which is/will be supported by the formula
+#
+# If you do not need to provide defaults via the `os_family` grain,
+# you will need to provide at least an empty dict in this file, e.g.
+# osfamilymap: {}
+---
+{%- if grains.os == 'MacOS' %}
+    {%- set macos_rootuser = salt['cmd.run']("stat -f '%Su' /dev/console") %}
+    {%- set macos_rootgroup = salt['cmd.run']("stat -f '%Sg' /dev/console") %}
+{%- endif %}
+
+            {%- if 'oscodename' in grains %}
+Debian:
+  pkg:
+    repo:
+      humanname: Insomnia Repository for Debian
+      name: deb https://dl.bintray.com/getinsomnia/Insomnia {{ grains.oscodename }} main
+      dist: {{ grains['oscodename'] }}
+      file: /etc/apt/sources.list.d/insomnia_bintray.list
+      key_url: https://insomnia.rest/keys/debian-public.key.asc
+      keyserver: keyserver.ubuntu.com
+            {%- endif %}
+
+Windows:
+  pkg:
+    binary:
+      uri: https://updates.insomnia.rest/downloads/windows
+      source_hash: afbc755662e4b7e416f6d4827281e3df6510b9c66a08531b3aa10d666019dd93f
+
+MacOS:
+  rootuser: {{ macos_rootuser | d('') }}
+  rootgroup: {{ macos_rootgroup | d('') }}
+  pkg:
+    name: insomnia
+    macapp:
+      uri: https://updates.insomnia.rest/downloads/mac
+      source_hash: 7718dd2c1a6ec0edafe36116d9123cda80b769abadc2d4fc5c5389922c7dfa6f
