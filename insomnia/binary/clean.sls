@@ -16,6 +16,6 @@ insomnia-package-binary-clean-file-absent:
 insomnia-not-available-to-clean:
   test.show_notification:
     - text: |
-        The insomnia binary is only available on Windows }}
+        The insomnia binary is only available on Windows
 
     {%- endif %}

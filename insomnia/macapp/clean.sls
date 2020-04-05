@@ -17,6 +17,6 @@ insomnia-macos-app-clean-files:
 insomnia-macos-app-clean-unavailable:
   test.show_notification:
     - text: |
-        The insomnia macpackage is only available on MacOS }}
+        The insomnia macpackage is only available on MacOS
 
     {%- endif %}

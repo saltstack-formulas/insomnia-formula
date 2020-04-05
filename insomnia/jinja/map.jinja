@@ -18,8 +18,8 @@
 {%- set insomnia = salt['grains.filter_by']( {'defaults': defaults}, default='defaults', merge=_config) %}
 
 {%- if insomnia.pkg.use_upstream_macapp %}
-   {%- do insomnia.pkg.macapp.update({ 'source': '%s/mac/%s'|format(insomnia.pkg.macapp.uri, insomnia.version)}) %}
+       {%- do insomnia.pkg.macapp.update({ 'source': '%s/%s'|format(insomnia.pkg.macapp.uri, insomnia.version)}) %}
 {%- endif %}
 {%- if insomnia.pkg.use_upstream_binary %}
-   {%- do insomnia.pkg.binary.update({ 'source': '%s/windows/%s'|format(insomnia.pkg.binary.uri, insomnia.version)}) %}
+       {%- do insomnia.pkg.binary.update({ 'source': '%s/%s'|format(insomnia.pkg.binary.uri, insomnia.version)}) %}
 {%- endif %}

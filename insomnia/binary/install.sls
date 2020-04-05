@@ -35,6 +35,6 @@ insomnia-package-binary-install:
 insomnia-not-available-to-install:
   test.show_notification:
     - text: |
-        The insomnia binary is only available on Windows }}
+        The insomnia binary is only available on Windows
 
     {%- endif %}
