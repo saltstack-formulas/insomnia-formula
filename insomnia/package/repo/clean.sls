@@ -3,7 +3,7 @@
 
 {#- Get the `tplroot` from `tpldir` #}
 {%- set tplroot = tpldir.split('/')[0] %}
-{%- from tplroot ~ "/jinja/map.jinja" import insomnia with context %}
+{%- from tplroot ~ "/map.jinja" import insomnia with context %}
 
 insomnia-package-repo-pkgrepo-absent:
   pkgrepo.absent:

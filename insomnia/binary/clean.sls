@@ -4,7 +4,7 @@
     {%- if grains.os == 'Windows' %}
 
 {%- set tplroot = tpldir.split('/')[0] %}
-{%- from tplroot ~ "/jinja/map.jinja" import insomnia with context %}
+{%- from tplroot ~ "/map.jinja" import insomnia with context %}
 
 insomnia-package-binary-clean-file-absent:
   file.absent:
