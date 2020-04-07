@@ -20,6 +20,7 @@ insomnia-package-install-pkg-installed:
 insomnia-package-install-cmd-run-cask:
   cmd.run:
     - name: brew cask install insomnia
+    - runas: {{ insomnia.rootuser }}
     - onlyif: test -x /usr/local/bin/brew
 
     {%- elif grains.kernel|lower == 'linux' %}

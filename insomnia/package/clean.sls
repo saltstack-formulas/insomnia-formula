@@ -20,6 +20,7 @@ insomnia-package-remove-pkg-removed:
 insomnia-package-remove-cmd-run-cask:
   cmd.run:
     - name: brew cask remove insomnia
+    - runas: {{ insomnia.rootuser }}
     - onlyif: test -x /usr/local/bin/brew
 
     {%- elif grains.kernel|lower == 'linux' %}
