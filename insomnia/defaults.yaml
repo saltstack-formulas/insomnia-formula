@@ -12,7 +12,7 @@ insomnia:
     name: insomnia
     use_upstream_repo: false    # Debian
     use_upstream_binary: false  # win
-    use_upstream_macapp: true   # macos
+    use_upstream_macapp: false   # macos
     repo: {}
     binary: {}
     macapp: {}
