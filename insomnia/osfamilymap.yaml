@@ -28,6 +28,12 @@ Debian:
       keyserver: keyserver.ubuntu.com
             {%- endif %}
 
+RedHat:
+  pkg:
+    deps:
+      - epel-release
+      - snapd
+
 Windows:
   pkg:
     use_upstream_binary: true
