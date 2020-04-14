@@ -26,6 +26,11 @@ insomnia-package-install-cmd-run-cask:
     {%- elif grains.kernel|lower == 'linux' %}
 
 insomnia-package-install-cmd-run-snap:
+  pkg.installed:
+    - names: {{ insomnia.pkg.deps }}
+    - onlyif: {{ insomnia.pkg.deps|length > 0 }}
+  service.running:
+    - name: snapd
   cmd.run:
     - name: snap install insomnia
     - onlyif: test -x /usr/bin/snap || test -x /usr/local/bin/snap
