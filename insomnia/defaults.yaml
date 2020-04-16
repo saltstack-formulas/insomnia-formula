@@ -13,7 +13,8 @@ insomnia:
     use_upstream_repo: false    # Debian
     use_upstream_binary: false  # win
     use_upstream_macapp: false   # macos
-    deps: []
+    deps:
+      - snapd
     repo: {}
     binary: {}
     macapp: {}

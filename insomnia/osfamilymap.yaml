@@ -32,7 +32,6 @@ RedHat:
   pkg:
     deps:
       - epel-release
-      - snapd
 
 Windows:
   pkg:

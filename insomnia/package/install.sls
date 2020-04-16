@@ -27,7 +27,7 @@ insomnia-package-install-cmd-run-cask:
 
 insomnia-package-install-cmd-run-snap:
   pkg.installed:
-    - names: {{ insomnia.pkg.deps }}
+    - names: {{ insomnia.pkg.deps|json }}
     - onlyif: {{ insomnia.pkg.deps|length > 0 }}
   service.running:
     - name: snapd
