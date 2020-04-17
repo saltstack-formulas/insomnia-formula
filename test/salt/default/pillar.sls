@@ -6,7 +6,7 @@ insomnia:
   pkg:
     # Linux (except Debian) uses snap
     use_upstream_repo: false    # Debian
-    use_upstream_binary: false  # win
+    use_upstream_archive: false  # win
     use_upstream_macapp: true   # macos
     macapp:
       uri: https://updates.insomnia.rest/downloads/mac

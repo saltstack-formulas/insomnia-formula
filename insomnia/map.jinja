@@ -20,6 +20,6 @@
 {%- if insomnia.pkg.use_upstream_macapp %}
        {%- do insomnia.pkg.macapp.update({ 'source': '%s/%s'|format(insomnia.pkg.macapp.uri, insomnia.version)}) %}
 {%- endif %}
-{%- if insomnia.pkg.use_upstream_binary %}
-       {%- do insomnia.pkg.binary.update({ 'source': '%s/%s'|format(insomnia.pkg.binary.uri, insomnia.version)}) %}
+{%- if insomnia.pkg.use_upstream_archive %}
+       {%- do insomnia.pkg.archive.update({ 'source': '%s/%s'|format(insomnia.pkg.archive.uri, insomnia.version)}) %}
 {%- endif %}

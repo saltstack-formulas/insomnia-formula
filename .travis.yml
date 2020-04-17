@@ -74,9 +74,9 @@ jobs:
     - env: INSTANCE=default-fedora-31-master-py3
 
     env: INSTANCE=default-centos-8-master-py3
-    # env: INSTANCE=binary-opensuse-leap-151-master-py3
-    # env: INSTANCE=binary-amazonlinux-2-master-py3
-    # env: INSTANCE=binary-arch-base-latest-master-py2
+    # env: INSTANCE=archive-opensuse-leap-151-master-py3
+    # env: INSTANCE=archive-amazonlinux-2-master-py3
+    # env: INSTANCE=archive-arch-base-latest-master-py2
     # - env: INSTANCE=default-debian-10-3000-1-py3
     # - env: INSTANCE=default-ubuntu-1804-3000-1-py3
     # - env: INSTANCE=default-centos-8-3000-1-py3

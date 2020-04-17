@@ -171,7 +171,7 @@ suites:
     verifier:
       inspec_tests:
         - path: test/integration/default
-  - name: binary
+  - name: archive
     provisioner:
       state_top:
         base:
@@ -183,10 +183,10 @@ suites:
             '*':
               - insomnia
       pillars_from_files:
-        insomnia.sls: test/salt/binary/pillar.sls
+        insomnia.sls: test/salt/archive/pillar.sls
     verifier:
       inspec_tests:
-        - path: test/integration/binary
+        - path: test/integration/archive
   - name: homebrew
     provisioner:
       state_top:
