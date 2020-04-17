@@ -18,6 +18,9 @@
             {%- if 'oscodename' in grains %}
 Debian:
   pkg:
+    deps:
+      - fuse
+      - snapd
     use_upstream_repo: true
     repo:
       humanname: Insomnia Repository for Debian
@@ -31,7 +34,8 @@ Debian:
 RedHat:
   pkg:
     deps:
-      - epel-release
+      {{ '- epel-release' if grains.os not in ('Fedora',) else '' }}
+      - snapd
 
 Windows:
   pkg:

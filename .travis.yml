@@ -69,9 +69,9 @@ jobs:
     #       to allow for comprehensive local testing
     #       Ref: https://github.com/saltstack-formulas/template-formula/issues/118
     #       Ref: https://github.com/saltstack-formulas/template-formula/issues/121
-    - env: INSTANCE=default-ubuntu-1804-master-py3
+    # env: INSTANCE=default-ubuntu-1804-master-py3
     - env: INSTANCE=default-debian-10-master-py3
-    - env: INSTANCE=default-fedora-31-master-py3
+    # env: INSTANCE=default-fedora-31-master-py3
 
     - env: INSTANCE=default-centos-8-master-py3
     # env: INSTANCE=archive-opensuse-leap-151-master-py3
