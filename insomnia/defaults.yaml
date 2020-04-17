@@ -7,15 +7,16 @@ insomnia:
   rootgroup: root
   dir:
     tmp: /tmp/insomnia
-    binary: /usr/local
+    archive: /usr/local
   pkg:
     name: insomnia
     use_upstream_repo: false    # Debian
-    use_upstream_binary: false  # win
+    use_upstream_archive: false  # win
     use_upstream_macapp: false   # macos
-    deps: []
+    deps:
+      - snapd
     repo: {}
-    binary: {}
+    archive: {}
     macapp: {}
   retry_option:
     # https://docs.saltstack.com/en/latest/ref/states/requisites.html#retrying-states

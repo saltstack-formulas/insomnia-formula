@@ -18,6 +18,9 @@
             {%- if 'oscodename' in grains %}
 Debian:
   pkg:
+    deps:
+      - fuse
+      - snapd
     use_upstream_repo: true
     repo:
       humanname: Insomnia Repository for Debian
@@ -31,13 +34,13 @@ Debian:
 RedHat:
   pkg:
     deps:
-      - epel-release
+      {{ '- epel-release' if grains.os not in ('Fedora',) else '' }}
       - snapd
 
 Windows:
   pkg:
-    use_upstream_binary: true
-    binary:
+    use_upstream_archive: true
+    archive:
       uri: https://updates.insomnia.rest/downloads/windows
       source_hash: afbc755662e4b7e416f6d4827281e3df6510b9c66a08531b3aa10d666019dd93f
 

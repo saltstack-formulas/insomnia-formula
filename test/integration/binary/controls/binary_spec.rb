@@ -2,7 +2,7 @@
 
 title 'insomnia archives profile'
 
-control 'insomnia binary archive' do
+control 'insomnia archive archive' do
   impact 1.0
   title 'should be installed'
 end

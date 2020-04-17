@@ -7,22 +7,22 @@
 {%- from tplroot ~ "/map.jinja" import insomnia as insomnia with context %}
 {%- from tplroot ~ "/macros.jinja" import format_kwargs with context %}
 
-insomnia-package-binary-install:
+insomnia-package-archive-install:
   file.directory:
-    - name: {{ insomnia.pkg.binary.name }}
+    - name: {{ insomnia.pkg.archive.name }}
     - user: {{ insomnia.rootuser }}
     - group: {{ insomnia.rootgroup }}
     - mode: 755
     - makedirs: True
     - clean: True
     - require_in:
-      - archive: insomnia-package-binary-install
+      - archive: insomnia-package-archive-install
     - recurse:
         - user
         - group
         - mode
   archive.extracted:
-    {{- format_kwargs(insomnia.pkg.binary) }}
+    {{- format_kwargs(insomnia.pkg.archive) }}
     - retry: {{ insomnia.retry_option }}
     - user: {{ insomnia.rootuser }}
     - group: {{ insomnia.rootgroup }}
@@ -35,6 +35,6 @@ insomnia-package-binary-install:
 insomnia-not-available-to-install:
   test.show_notification:
     - text: |
-        The insomnia binary is only available on Windows
+        The insomnia archive is only available on Windows
 
     {%- endif %}

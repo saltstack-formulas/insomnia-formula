@@ -13,6 +13,7 @@ include:
 insomnia-package-install-pkg-installed:
   pkg.installed:
     - name: {{ insomnia.pkg.name }}
+    - refresh: true
     - reload_modules: true
 
     {%- elif grains.os_family == 'MacOS' %}
@@ -27,12 +28,18 @@ insomnia-package-install-cmd-run-cask:
 
 insomnia-package-install-cmd-run-snap:
   pkg.installed:
-    - names: {{ insomnia.pkg.deps }}
+    - names: {{ insomnia.pkg.deps|json }}
+    - refresh: true
+    - reload_modules: true
     - onlyif: {{ insomnia.pkg.deps|length > 0 }}
   service.running:
     - name: snapd
   cmd.run:
-    - name: snap install insomnia
+    - names:
+      - sleep 20  # https://askubuntu.com/questions/1114117/ubuntu-18-04-lts-too-early-for-operation-error
+      - snap install insomnia
     - onlyif: test -x /usr/bin/snap || test -x /usr/local/bin/snap
+    - retry: {{ insomnia.retry_option }}
+    - hide_output: true
 
     {%- endif %}
