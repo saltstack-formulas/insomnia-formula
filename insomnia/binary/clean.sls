@@ -6,16 +6,16 @@
 {%- set tplroot = tpldir.split('/')[0] %}
 {%- from tplroot ~ "/map.jinja" import insomnia with context %}
 
-insomnia-package-binary-clean-file-absent:
+insomnia-package-archive-clean-file-absent:
   file.absent:
     - names:
-      - {{ insomnia.pkg.binary.name }}
+      - {{ insomnia.pkg.archive.name }}
 
     {%- else %}
 
 insomnia-not-available-to-clean:
   test.show_notification:
     - text: |
-        The insomnia binary is only available on Windows
+        The insomnia archive is only available on Windows
 
     {%- endif %}

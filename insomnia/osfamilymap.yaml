@@ -18,6 +18,10 @@
             {%- if 'oscodename' in grains %}
 Debian:
   pkg:
+    deps:
+      - fuse
+      - snapd
+    use_upstream_repo: true
     repo:
       humanname: Insomnia Repository for Debian
       name: deb https://dl.bintray.com/getinsomnia/Insomnia {{ grains.oscodename }} main
@@ -27,9 +31,16 @@ Debian:
       keyserver: keyserver.ubuntu.com
             {%- endif %}
 
+RedHat:
+  pkg:
+    deps:
+      {{ '- epel-release' if grains.os not in ('Fedora',) else '' }}
+      - snapd
+
 Windows:
   pkg:
-    binary:
+    use_upstream_archive: true
+    archive:
       uri: https://updates.insomnia.rest/downloads/windows
       source_hash: afbc755662e4b7e416f6d4827281e3df6510b9c66a08531b3aa10d666019dd93f
 
@@ -38,6 +49,7 @@ MacOS:
   rootgroup: {{ macos_rootgroup | d('') }}
   pkg:
     name: insomnia
+    use_upstream_macapp: true
     macapp:
       uri: https://updates.insomnia.rest/downloads/mac
       source_hash: 7718dd2c1a6ec0edafe36116d9123cda80b769abadc2d4fc5c5389922c7dfa6f

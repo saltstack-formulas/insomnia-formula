@@ -60,10 +60,10 @@ starts the associated insomnia service.
 
 This state will install Insomnia package on MacOS (homebrew), Debian (repo) and GNU/Linux (snap).
 
-``insomnia.binary``
+``insomnia.archive``
 ^^^^^^^^^^^^^^^^^^
 
-This state will install Insomnia from binary on Windows (part implemented).
+This state will install Insomnia from archive on Windows (part implemented).
 
 ``insomnia.macapp``
 ^^^^^^^^^^^^^^^^^^
@@ -82,7 +82,7 @@ this state will undo everything performed in the ``insomnia`` meta-state in reve
 
 This state will remove Insomnia package on MacOS (homebrew), Debian, and GNU/Linux (snap).
 
-``insomnia.binary.clean``
+``insomnia.archive.clean``
 ^^^^^^^^^^^^^^^^^^^^^^^^
 
 This state will remove Insomnia package on Windows (part implemented).

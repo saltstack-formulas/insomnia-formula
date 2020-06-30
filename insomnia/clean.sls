@@ -11,7 +11,7 @@ include:
 
              {%- elif grains.os_family == 'Windows' %}
 include:
-  - .binary.clean
+  - .archive.clean
 
              {%- else %}
 include:
